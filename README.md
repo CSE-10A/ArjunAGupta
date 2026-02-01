@@ -1,2 +1,2 @@
-# skibidigupta
+# ArjunAGupta
 skibidi repo
