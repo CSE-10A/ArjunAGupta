@@ -963,12 +963,12 @@ h1 {
   opacity: calc(0.6 + var(--scroll-progress) * 0.4);
 }
 
-.ai-pulse.pulse-two {
+.ai-pulse.pulse-2 {
   inset: 18px;
   border-color: rgba(76, 201, 240, 0.4);
 }
 
-.ai-pulse.pulse-three {
+.ai-pulse.pulse-3 {
   inset: 36px;
   border-color: rgba(123, 97, 255, 0.4);
 }
