@@ -1,5 +1,8 @@
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const TILT_INTENSITY = 10;
+const SCROLL_THRESHOLD = 12;
+const PARALLAX_SPEED_HERO = 0.2;
+const PARALLAX_SPEED_PAGE = 0.12;
 const revealTargets = document.querySelectorAll(".reveal, .reveal-group");
 
 if (revealTargets.length > 0) {
@@ -22,7 +25,7 @@ const header = document.querySelector(".site-header");
 
 if (header) {
   const updateHeader = () => {
-    header.classList.toggle("is-scrolled", window.scrollY > 12);
+    header.classList.toggle("is-scrolled", window.scrollY > SCROLL_THRESHOLD);
   };
 
   updateHeader();
@@ -36,7 +39,7 @@ if (!prefersReducedMotion && parallaxTargets.length > 0) {
 
   const updateParallax = () => {
     parallaxTargets.forEach((section) => {
-      const speed = section.classList.contains("hero") ? 0.2 : 0.12;
+      const speed = section.classList.contains("hero") ? PARALLAX_SPEED_HERO : PARALLAX_SPEED_PAGE;
       const offset = section.offsetTop;
       const yPos = (window.scrollY - offset) * speed;
       section.style.setProperty("--parallax-offset", `${yPos}px`);
