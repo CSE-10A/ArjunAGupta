@@ -64,8 +64,8 @@ if (!prefersReducedMotion && tiltTargets.length > 0) {
       const rect = target.getBoundingClientRect();
       const x = (event.clientX - rect.left) / rect.width - 0.5;
       const y = (event.clientY - rect.top) / rect.height - 0.5;
-      const rotateX = (-y * TILT_INTENSITY).toFixed(2);
-      const rotateY = (x * TILT_INTENSITY).toFixed(2);
+      const rotateX = -y * TILT_INTENSITY;
+      const rotateY = x * TILT_INTENSITY;
 
       target.style.setProperty("--tilt-x", `${rotateX}deg`);
       target.style.setProperty("--tilt-y", `${rotateY}deg`);
