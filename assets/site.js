@@ -52,7 +52,7 @@ if (!prefersReducedMotion && parallaxTargets.length > 0) {
 
   updateParallax();
   window.addEventListener("scroll", requestTick, { passive: true });
-  window.addEventListener("resize", updateParallax);
+  window.addEventListener("resize", requestTick);
 }
 
 const tiltTargets = document.querySelectorAll(".card, .hero-stats div, .callout");
