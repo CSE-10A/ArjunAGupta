@@ -1,4 +1,5 @@
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const TILT_INTENSITY = 10;
 const revealTargets = document.querySelectorAll(".reveal, .reveal-group");
 
 if (revealTargets.length > 0) {
@@ -63,8 +64,8 @@ if (!prefersReducedMotion && tiltTargets.length > 0) {
       const rect = target.getBoundingClientRect();
       const x = (event.clientX - rect.left) / rect.width - 0.5;
       const y = (event.clientY - rect.top) / rect.height - 0.5;
-      const rotateX = (-y * 10).toFixed(2);
-      const rotateY = (x * 10).toFixed(2);
+      const rotateX = (-y * TILT_INTENSITY).toFixed(2);
+      const rotateY = (x * TILT_INTENSITY).toFixed(2);
 
       target.style.setProperty("--tilt-x", `${rotateX}deg`);
       target.style.setProperty("--tilt-y", `${rotateY}deg`);
