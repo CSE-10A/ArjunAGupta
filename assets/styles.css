@@ -172,7 +172,7 @@ a {
   overflow: hidden;
   background-image: linear-gradient(135deg, rgba(11, 15, 26, 0.85), rgba(11, 15, 26, 0.95)),
     url("hero-background.jpg");
-  background-position: center, center calc(50% + var(--parallax-offset, 0px));
+  background-position: center calc(50% + var(--parallax-offset, 0px)), center calc(50% + var(--parallax-offset, 0px));
   background-size: cover, cover;
   background-repeat: no-repeat;
 }
@@ -442,30 +442,15 @@ h1 {
 
 .page-hero {
   padding: 4.5rem 0 3rem;
-  background: radial-gradient(circle at top left, rgba(76, 201, 240, 0.15), transparent 55%),
-    var(--bg);
+  background-color: var(--bg);
+  background-image: radial-gradient(circle at top left, var(--accent-soft), transparent 55%),
+    radial-gradient(circle at 80% 10%, var(--accent-hot-soft), transparent 60%);
+  background-position: left calc(0% + var(--parallax-offset, 0px)),
+    right calc(10% + var(--parallax-offset, 0px));
+  background-size: 120% 120%;
+  background-repeat: no-repeat;
   position: relative;
   overflow: hidden;
-}
-
-.page-hero::after {
-  content: "";
-  position: absolute;
-  width: 340px;
-  height: 340px;
-  right: -140px;
-  top: 30px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(247, 37, 133, 0.2), transparent 70%);
-  transform: translateY(var(--parallax-offset, 0px));
-  transition: transform 0.3s ease;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.page-hero > .container {
-  position: relative;
-  z-index: 1;
 }
 
 .two-column {

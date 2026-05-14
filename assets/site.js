@@ -36,11 +36,18 @@ const parallaxTargets = document.querySelectorAll(".hero, .page-hero");
 
 if (!prefersReducedMotion && parallaxTargets.length > 0) {
   let ticking = false;
+  let parallaxOffsets = [];
+
+  const cacheOffsets = () => {
+    parallaxOffsets = Array.from(parallaxTargets).map((section) => ({
+      section,
+      offset: section.offsetTop,
+      speed: section.classList.contains("hero") ? PARALLAX_SPEED_HERO : PARALLAX_SPEED_PAGE,
+    }));
+  };
 
   const updateParallax = () => {
-    parallaxTargets.forEach((section) => {
-      const speed = section.classList.contains("hero") ? PARALLAX_SPEED_HERO : PARALLAX_SPEED_PAGE;
-      const offset = section.offsetTop;
+    parallaxOffsets.forEach(({ section, offset, speed }) => {
       const yPos = (window.scrollY - offset) * speed;
       section.style.setProperty("--parallax-offset", `${yPos}px`);
     });
@@ -54,9 +61,15 @@ if (!prefersReducedMotion && parallaxTargets.length > 0) {
     }
   };
 
+  const handleResize = () => {
+    cacheOffsets();
+    requestTick();
+  };
+
+  cacheOffsets();
   updateParallax();
   window.addEventListener("scroll", requestTick, { passive: true });
-  window.addEventListener("resize", requestTick);
+  window.addEventListener("resize", handleResize, { passive: true });
 }
 
 const tiltTargets = document.querySelectorAll(".card, .hero-stats div, .callout");
