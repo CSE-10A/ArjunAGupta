@@ -159,6 +159,100 @@ if (!prefersReducedMotion && scrollScenes.length > 0) {
   window.addEventListener("resize", requestSceneTick, { passive: true });
 }
 
+const modelScrollSections = document.querySelectorAll("[data-model-scroll]");
+
+if (!prefersReducedMotion && modelScrollSections.length > 0) {
+  const DEFAULT_CAMERA_TARGET = "0m 0m 0m";
+  const DEFAULT_FIELD_OF_VIEW = "45deg";
+  const parseNumericValue = (value) => {
+    const match = String(value).match(/-?\d+(?:\.\d+)?/);
+    return match ? Number.parseFloat(match[0]) : 0;
+  };
+  const lerp = (start, end, progress) => start + (end - start) * progress;
+  const lerpArray = (start, end, progress) => start.map((value, index) => lerp(value, end[index], progress));
+  const parseTriplet = (value) => value.split(" ").map((part) => parseNumericValue(part));
+
+  modelScrollSections.forEach((section) => {
+    const modelViewer = section.querySelector("model-viewer");
+    const steps = Array.from(section.querySelectorAll("[data-orbit]"));
+
+    if (!modelViewer || steps.length === 0) {
+      return;
+    }
+
+    const stepData = steps.map((step) => ({
+      element: step,
+      orbit: parseTriplet(step.dataset.orbit),
+      target: parseTriplet(step.dataset.target || DEFAULT_CAMERA_TARGET),
+      fov: parseNumericValue(step.dataset.fov || DEFAULT_FIELD_OF_VIEW),
+    }));
+
+    let stepPositions = [];
+    let ticking = false;
+
+    const cachePositions = () => {
+      stepPositions = stepData.map(({ element }) => ({
+        top: element.getBoundingClientRect().top + window.scrollY,
+        height: element.offsetHeight,
+      }));
+    };
+
+    const updateModel = () => {
+      const viewportMid = window.scrollY + window.innerHeight * 0.5;
+      let index = 0;
+      for (let i = 0; i < stepPositions.length; i += 1) {
+        if (viewportMid >= stepPositions[i].top) {
+          index = i;
+        } else {
+          break;
+        }
+      }
+
+      const nextIndex = Math.min(index + 1, stepData.length - 1);
+      const current = stepData[index];
+      const next = stepData[nextIndex];
+      const start = stepPositions[index].top;
+      const end = stepPositions[nextIndex]?.top ?? start + stepPositions[index].height;
+      const progress =
+        nextIndex === index || end === start ? 0 : Math.min(Math.max((viewportMid - start) / (end - start), 0), 1);
+
+      const orbit = lerpArray(current.orbit, next.orbit, progress);
+      const target = lerpArray(current.target, next.target, progress);
+      const fov = lerp(current.fov, next.fov, progress);
+
+      modelViewer.setAttribute(
+        "camera-orbit",
+        `${orbit[0].toFixed(2)}deg ${orbit[1].toFixed(2)}deg ${orbit[2].toFixed(2)}m`
+      );
+      modelViewer.setAttribute(
+        "camera-target",
+        `${target[0].toFixed(2)}m ${target[1].toFixed(2)}m ${target[2].toFixed(2)}m`
+      );
+      modelViewer.setAttribute("field-of-view", `${fov.toFixed(2)}deg`);
+      ticking = false;
+    };
+
+    const requestUpdate = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateModel);
+        ticking = true;
+      }
+    };
+
+    cachePositions();
+    updateModel();
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener(
+      "resize",
+      () => {
+        cachePositions();
+        requestUpdate();
+      },
+      { passive: true }
+    );
+  });
+}
+
 const tiltTargets = document.querySelectorAll(".card, .hero-stats div, .callout");
 
 if (!prefersReducedMotion && tiltTargets.length > 0) {
