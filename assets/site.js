@@ -162,8 +162,10 @@ if (!prefersReducedMotion && scrollScenes.length > 0) {
 const modelScrollSections = document.querySelectorAll("[data-model-scroll]");
 
 if (!prefersReducedMotion && modelScrollSections.length > 0) {
+  const DEFAULT_CAMERA_TARGET = "0m 0m 0m";
+  const DEFAULT_FIELD_OF_VIEW = "45deg";
   const parseNumber = (value) => {
-    const match = String(value).match(/-?[\d.]+/);
+    const match = String(value).match(/-?\d+(?:\.\d+)?/);
     return match ? Number.parseFloat(match[0]) : 0;
   };
   const lerp = (start, end, progress) => start + (end - start) * progress;
@@ -181,8 +183,8 @@ if (!prefersReducedMotion && modelScrollSections.length > 0) {
     const stepData = steps.map((step) => ({
       element: step,
       orbit: parseTriplet(step.dataset.orbit),
-      target: parseTriplet(step.dataset.target || "0m 0m 0m"),
-      fov: parseNumber(step.dataset.fov || "45deg"),
+      target: parseTriplet(step.dataset.target || DEFAULT_CAMERA_TARGET),
+      fov: parseNumber(step.dataset.fov || DEFAULT_FIELD_OF_VIEW),
     }));
 
     let stepPositions = [];
