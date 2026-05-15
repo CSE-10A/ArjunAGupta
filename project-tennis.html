@@ -70,24 +70,61 @@
       </div>
     </section>
 
-    <section class="section project-scroll-section scroll-scene" data-scroll-scene>
-      <div class="container project-story-grid">
-        <div class="project-scroll-visual">
-          <div class="rally-track">
-            <span class="rally-line"></span>
-            <span class="rally-ball"></span>
-          </div>
+    <section class="section tennis-scroll-section" data-model-scroll>
+      <div class="container tennis-scroll-layout">
+        <div class="tennis-scroll-visual">
+          <model-viewer
+            class="tennis-scroll-model"
+            src="assets/models/tennis-racket.glb"
+            alt="3D tennis racket model"
+            interaction-prompt="none"
+            disable-zoom
+            camera-orbit="0deg 75deg 3m"
+            camera-target="0m 0m 0m"
+            field-of-view="45deg"
+          ></model-viewer>
         </div>
-        <div>
-          <h2 class="section-title">Rally Momentum</h2>
-          <p class="lead">
-            The ball accelerates along the rally line, mirroring the pace of a long point.
-          </p>
-          <ul class="project-list">
-            <li>Match scouting and opponent notes.</li>
-            <li>Footwork drills and serve routines.</li>
-            <li>Motivation and on-court communication.</li>
-          </ul>
+        <div class="tennis-scroll-steps">
+          <article
+            class="tennis-scroll-step"
+            data-orbit="0deg 75deg 3m"
+            data-target="0m 0m 0m"
+            data-fov="45deg"
+          >
+            <p class="eyebrow">Racket Focus 01</p>
+            <h2 class="section-title">Full Frame Overview</h2>
+            <p class="lead">Start with the full frame to anchor the balance and proportions of the racket.</p>
+          </article>
+          <article
+            class="tennis-scroll-step"
+            data-orbit="22deg 68deg 2.2m"
+            data-target="0m 0.45m 0.02m"
+            data-fov="35deg"
+          >
+            <p class="eyebrow">Racket Focus 02</p>
+            <h2 class="section-title">Racket Head Control</h2>
+            <p class="lead">Zoom into the top to emphasize stability through the high contact point.</p>
+          </article>
+          <article
+            class="tennis-scroll-step"
+            data-orbit="-12deg 70deg 2.4m"
+            data-target="0m 0.05m 0m"
+            data-fov="38deg"
+          >
+            <p class="eyebrow">Racket Focus 03</p>
+            <h2 class="section-title">Sweet Spot Strings</h2>
+            <p class="lead">Rotate across the strings to highlight the sweet spot and clean ball feel.</p>
+          </article>
+          <article
+            class="tennis-scroll-step"
+            data-orbit="120deg 78deg 2.6m"
+            data-target="0m -0.55m 0m"
+            data-fov="40deg"
+          >
+            <p class="eyebrow">Racket Focus 04</p>
+            <h2 class="section-title">Grip &amp; Handle</h2>
+            <p class="lead">Finish at the handle to reinforce grip pressure, control, and follow-through.</p>
+          </article>
         </div>
       </div>
     </section>
