@@ -191,12 +191,15 @@ if (!prefersReducedMotion && modelScrollSections.length > 0) {
     let ticking = false;
 
     const cachePositions = () => {
-      stepPositions = stepData.map(({ element }) => element.getBoundingClientRect().top + window.scrollY);
+      stepPositions = stepData.map(({ element }) => ({
+        top: element.getBoundingClientRect().top + window.scrollY,
+        height: element.offsetHeight,
+      }));
     };
 
     const updateModel = () => {
       const viewportMid = window.scrollY + window.innerHeight * 0.5;
-      let index = stepPositions.findIndex((position) => viewportMid < position);
+      let index = stepPositions.findIndex((position) => viewportMid < position.top);
       if (index === -1) {
         index = stepData.length - 1;
       } else {
@@ -206,8 +209,8 @@ if (!prefersReducedMotion && modelScrollSections.length > 0) {
       const nextIndex = Math.min(index + 1, stepData.length - 1);
       const current = stepData[index];
       const next = stepData[nextIndex];
-      const start = stepPositions[index];
-      const end = stepPositions[nextIndex] ?? start + window.innerHeight;
+      const start = stepPositions[index].top;
+      const end = stepPositions[nextIndex]?.top ?? start + stepPositions[index].height;
       const progress =
         nextIndex === index || end === start ? 0 : Math.min(Math.max((viewportMid - start) / (end - start), 0), 1);
 
