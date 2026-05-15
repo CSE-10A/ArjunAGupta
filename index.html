@@ -99,14 +99,12 @@
         <div class="section-header reveal">
           <p class="eyebrow">Featured Projects</p>
           <h2 class="section-title">Dive into the builds that keep me curious.</h2>
-          <p class="section-subtitle">3D visuals, scroll-driven scenes, and full project details live here.</p>
+          <p class="section-subtitle">3D visuals, immersive scenes, and full project details live here.</p>
         </div>
         <div class="project-grid reveal-group">
           <a class="card project-card" href="project-rocketry.html">
-            <div class="project-icon rocket-icon">
-              <span class="icon-body"></span>
-              <span class="icon-core"></span>
-              <span class="icon-glow"></span>
+            <div class="project-icon rocket-icon model-icon">
+              <model-viewer class="icon-model" src="https://raw.githubusercontent.com/pmndrs/examples/a2700f7983cadaa1d90a6d4ddda0acab2f0a29fe/demos/portal-shapes/src/sandboxes/rocket-transformed.glb" alt="3D rocket model" auto-rotate rotation-per-second="30deg" disable-zoom interaction-prompt="none"></model-viewer>
             </div>
             <h3>Rocketry Systems</h3>
             <p class="lead">Launch prep, flight telemetry, and safety checklists for my next mission.</p>
@@ -133,10 +131,8 @@
             <span class="project-link">Read the story</span>
           </a>
           <a class="card project-card" href="project-tennis.html">
-            <div class="project-icon tennis-icon">
-              <span class="icon-body"></span>
-              <span class="icon-core"></span>
-              <span class="icon-glow"></span>
+            <div class="project-icon tennis-icon model-icon">
+              <model-viewer class="icon-model" src="https://raw.githubusercontent.com/TTK4130/ttk4130.github.io/main/docs/_static/TennisRacket.glb" alt="3D tennis racket model" auto-rotate rotation-per-second="30deg" disable-zoom interaction-prompt="none"></model-viewer>
             </div>
             <h3>Tennis Leadership</h3>
             <p class="lead">3D racket visual and leadership highlights from the 18–2 season.</p>
@@ -163,6 +159,7 @@
       <a href="mailto:arjun.gupta@example.com">arjun.gupta@example.com</a>
     </div>
   </footer>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <script src="assets/site.js" defer></script>
 </body>
 </html>

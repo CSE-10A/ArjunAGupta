@@ -40,16 +40,7 @@
           </div>
         </div>
         <div class="project-hero-visual scroll-scene rocket-scene" data-scroll-scene>
-          <div class="rocket-track">
-            <div class="rocket-ship">
-              <span class="rocket-body"></span>
-              <span class="rocket-window"></span>
-              <span class="rocket-fin left"></span>
-              <span class="rocket-fin right"></span>
-              <span class="rocket-flame"></span>
-            </div>
-          </div>
-          <div class="rocket-glow"></div>
+          <model-viewer class="hero-model" src="https://raw.githubusercontent.com/pmndrs/examples/a2700f7983cadaa1d90a6d4ddda0acab2f0a29fe/demos/portal-shapes/src/sandboxes/rocket-transformed.glb" alt="3D rocket model" auto-rotate camera-controls disable-zoom interaction-prompt="none"></model-viewer>
         </div>
       </div>
     </section>
@@ -90,9 +81,9 @@
           </div>
         </div>
         <div>
-          <h2 class="section-title">Scroll-Driven Flight Path</h2>
+          <h2 class="section-title">Flight Path Highlights</h2>
           <p class="lead">
-            As you scroll, the rocket climbs the flight corridor while data rings expand to represent telemetry packets.
+            The rocket climbs the flight corridor while data rings expand to represent telemetry packets.
           </p>
           <ul class="project-list">
             <li>Pre-launch checklist and pad safety.</li>
@@ -127,6 +118,7 @@
       <a href="mailto:arjun.gupta@example.com">arjun.gupta@example.com</a>
     </div>
   </footer>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <script src="assets/site.js" defer></script>
 </body>
 </html>
