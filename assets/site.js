@@ -164,13 +164,13 @@ const modelScrollSections = document.querySelectorAll("[data-model-scroll]");
 if (!prefersReducedMotion && modelScrollSections.length > 0) {
   const DEFAULT_CAMERA_TARGET = "0m 0m 0m";
   const DEFAULT_FIELD_OF_VIEW = "45deg";
-  const parseNumber = (value) => {
+  const parseNumericValue = (value) => {
     const match = String(value).match(/-?\d+(?:\.\d+)?/);
     return match ? Number.parseFloat(match[0]) : 0;
   };
   const lerp = (start, end, progress) => start + (end - start) * progress;
   const lerpArray = (start, end, progress) => start.map((value, index) => lerp(value, end[index], progress));
-  const parseTriplet = (value) => value.split(" ").map((part) => parseNumber(part));
+  const parseTriplet = (value) => value.split(" ").map((part) => parseNumericValue(part));
 
   modelScrollSections.forEach((section) => {
     const modelViewer = section.querySelector("model-viewer");
@@ -184,7 +184,7 @@ if (!prefersReducedMotion && modelScrollSections.length > 0) {
       element: step,
       orbit: parseTriplet(step.dataset.orbit),
       target: parseTriplet(step.dataset.target || DEFAULT_CAMERA_TARGET),
-      fov: parseNumber(step.dataset.fov || DEFAULT_FIELD_OF_VIEW),
+      fov: parseNumericValue(step.dataset.fov || DEFAULT_FIELD_OF_VIEW),
     }));
 
     let stepPositions = [];
@@ -199,11 +199,13 @@ if (!prefersReducedMotion && modelScrollSections.length > 0) {
 
     const updateModel = () => {
       const viewportMid = window.scrollY + window.innerHeight * 0.5;
-      let index = stepPositions.findIndex((position) => viewportMid < position.top);
-      if (index === -1) {
-        index = stepData.length - 1;
-      } else {
-        index = Math.max(index - 1, 0);
+      let index = 0;
+      for (let i = 0; i < stepPositions.length; i += 1) {
+        if (viewportMid >= stepPositions[i].top) {
+          index = i;
+        } else {
+          break;
+        }
       }
 
       const nextIndex = Math.min(index + 1, stepData.length - 1);
