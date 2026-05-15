@@ -194,18 +194,20 @@ if (!prefersReducedMotion && modelScrollSections.length > 0) {
 
     const updateModel = () => {
       const viewportMid = window.scrollY + window.innerHeight * 0.5;
-      let index = stepPositions.findIndex(
-        (position, idx) => viewportMid < (stepPositions[idx + 1] ?? Number.POSITIVE_INFINITY)
-      );
-      if (index < 0) {
+      let index = stepPositions.findIndex((position) => viewportMid < position);
+      if (index === -1) {
         index = stepData.length - 1;
+      } else {
+        index = Math.max(index - 1, 0);
       }
 
+      const nextIndex = Math.min(index + 1, stepData.length - 1);
       const current = stepData[index];
-      const next = stepData[Math.min(index + 1, stepData.length - 1)];
+      const next = stepData[nextIndex];
       const start = stepPositions[index];
-      const end = stepPositions[index + 1] ?? start + window.innerHeight;
-      const progress = end === start ? 0 : Math.min(Math.max((viewportMid - start) / (end - start), 0), 1);
+      const end = stepPositions[nextIndex] ?? start + window.innerHeight;
+      const progress =
+        nextIndex === index || end === start ? 0 : Math.min(Math.max((viewportMid - start) / (end - start), 0), 1);
 
       const orbit = lerpArray(current.orbit, next.orbit, progress);
       const target = lerpArray(current.target, next.target, progress);
