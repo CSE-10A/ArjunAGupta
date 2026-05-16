@@ -684,44 +684,58 @@ h1 {
 
 .tennis-scroll-section {
   background: linear-gradient(120deg, rgba(18, 28, 54, 0.7), rgba(11, 15, 26, 0.95));
+  padding: 0;
+  position: relative;
 }
 
 .tennis-scroll-layout {
-  display: grid;
-  gap: 2.5rem;
-  grid-template-columns: minmax(240px, 360px) minmax(260px, 1fr);
-  align-items: start;
+  position: relative;
 }
 
 .tennis-scroll-visual {
   position: sticky;
-  top: clamp(5rem, 12vh, 7rem);
-  min-height: 360px;
+  top: 0;
+  height: 100vh;
+  width: 100%;
   display: grid;
   place-items: center;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .tennis-scroll-model {
-  width: min(380px, 100%);
-  height: 360px;
+  width: 100%;
+  height: 100%;
   display: block;
   background: transparent;
 }
 
 .tennis-scroll-steps {
-  display: grid;
-  gap: 2.5rem;
+  position: relative;
+  z-index: 2;
+  margin-top: -100vh;
+  padding: 50vh 0;
 }
 
 .tennis-scroll-step {
-  padding: 1.8rem;
-  border-radius: 18px;
-  background: rgba(17, 24, 39, 0.8);
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 1.5rem 18vh;
+}
+
+.tennis-scroll-card {
+  width: min(90vw, 520px);
+  padding: 2rem;
+  border-radius: 20px;
+  background: rgba(17, 24, 39, 0.82);
   border: 1px solid var(--border);
   box-shadow: var(--shadow-soft);
-  min-height: 52vh;
-  display: grid;
-  align-content: center;
+}
+
+.tennis-scroll-step.is-blank {
+  pointer-events: none;
 }
 
 .project-scroll-visual {
@@ -1302,16 +1316,11 @@ h1 {
     padding: 4.5rem 0 4rem;
   }
 
-  .tennis-scroll-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .tennis-scroll-visual {
-    position: static;
-    min-height: 260px;
-  }
-
   .tennis-scroll-step {
-    min-height: auto;
+    padding: 0 1rem 16vh;
+  }
+
+  .tennis-scroll-card {
+    padding: 1.6rem;
   }
 }
