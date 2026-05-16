@@ -25,53 +25,8 @@
   </header>
 
   <main>
-    <section class="page-hero project-hero reveal">
-      <div class="container project-hero-grid">
-        <div>
-          <p class="eyebrow">Project · Tennis</p>
-          <h1>Tennis Leadership &amp; Competitive Strategy</h1>
-          <p class="lead">
-            Captaining an 18–2 season with a focus on training systems, confidence, and team culture.
-          </p>
-          <div class="project-meta">
-            <span class="tag">Captain</span>
-            <span class="tag">18–2 Record</span>
-            <span class="tag">Team Culture</span>
-          </div>
-        </div>
-        <div class="project-hero-visual scroll-scene racket-scene" data-scroll-scene>
-          <model-viewer class="hero-model" src="assets/models/tennis-racket.glb" alt="3D tennis racket model" auto-rotate camera-controls disable-zoom interaction-prompt="none"></model-viewer>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container project-snapshot reveal">
-        <div>
-          <h2 class="section-title">Season Blueprint</h2>
-          <p class="lead">
-            I design training sessions, build confidence under pressure, and help teammates peak for match day.
-          </p>
-        </div>
-        <div class="project-stats">
-          <div>
-            <span class="stat-label">Season Record</span>
-            <span class="stat-value">18–2</span>
-          </div>
-          <div>
-            <span class="stat-label">Leadership Focus</span>
-            <span class="stat-value">Team Energy</span>
-          </div>
-          <div>
-            <span class="stat-label">Game Style</span>
-            <span class="stat-value">Aggressive Baseline</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section tennis-scroll-section" data-model-scroll>
-      <div class="container tennis-scroll-layout">
+    <section class="tennis-scroll-section" data-model-scroll>
+      <div class="tennis-scroll-layout">
         <div class="tennis-scroll-visual">
           <model-viewer
             class="tennis-scroll-model"
@@ -79,69 +34,82 @@
             alt="3D tennis racket model"
             interaction-prompt="none"
             disable-zoom
-            camera-orbit="0deg 75deg 3m"
+            camera-orbit="0deg 75deg 4m"
             camera-target="0m 0m 0m"
             field-of-view="45deg"
           ></model-viewer>
         </div>
         <div class="tennis-scroll-steps">
           <article
-            class="tennis-scroll-step"
-            data-orbit="0deg 75deg 3m"
+            class="tennis-scroll-step is-spacer"
+            data-orbit="0deg 75deg 4m"
             data-target="0m 0m 0m"
             data-fov="45deg"
           >
-            <p class="eyebrow">Racket Focus 01</p>
-            <h2 class="section-title">Full Frame Overview</h2>
-            <p class="lead">Start with the full frame to anchor the balance and proportions of the racket.</p>
+            <span class="visually-hidden">
+              Opening view: full-frame tennis racket displayed at the default camera position.
+            </span>
           </article>
           <article
             class="tennis-scroll-step"
-            data-orbit="22deg 68deg 2.2m"
-            data-target="0m 0.45m 0.02m"
-            data-fov="35deg"
-          >
-            <p class="eyebrow">Racket Focus 02</p>
-            <h2 class="section-title">Racket Head Control</h2>
-            <p class="lead">Zoom into the top to emphasize stability through the high contact point.</p>
-          </article>
-          <article
-            class="tennis-scroll-step"
-            data-orbit="-12deg 70deg 2.4m"
-            data-target="0m 0.05m 0m"
-            data-fov="38deg"
-          >
-            <p class="eyebrow">Racket Focus 03</p>
-            <h2 class="section-title">Sweet Spot Strings</h2>
-            <p class="lead">Rotate across the strings to highlight the sweet spot and clean ball feel.</p>
-          </article>
-          <article
-            class="tennis-scroll-step"
-            data-orbit="120deg 78deg 2.6m"
-            data-target="0m -0.55m 0m"
+            data-orbit="18deg 70deg 3.3m"
+            data-target="0m 0.35m 0.02m"
             data-fov="40deg"
           >
-            <p class="eyebrow">Racket Focus 04</p>
-            <h2 class="section-title">Grip &amp; Handle</h2>
-            <p class="lead">Finish at the handle to reinforce grip pressure, control, and follow-through.</p>
+            <div class="tennis-scroll-card reveal">
+              <p class="eyebrow">Rally Focus · Vision</p>
+              <h2 class="section-title">Captain’s Vision</h2>
+              <p class="lead">Zoom in to the racket head as the match plan sharpens and focus tightens.</p>
+            </div>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container project-grid slim reveal-group">
-        <div class="card">
-          <h3>Training Systems</h3>
-          <p class="lead">Structured practices that balance endurance, agility, and confidence.</p>
-        </div>
-        <div class="card">
-          <h3>Leadership Moments</h3>
-          <p class="lead">Keeping the team calm under pressure and locked into match strategy.</p>
-        </div>
-        <div class="card">
-          <h3>Competitive Edge</h3>
-          <p class="lead">Turning close sets into wins through relentless energy.</p>
+          <article
+            class="tennis-scroll-step"
+            data-orbit="34deg 68deg 2.8m"
+            data-target="0m 0.18m 0m"
+            data-fov="36deg"
+          >
+            <div class="tennis-scroll-card reveal">
+              <p class="eyebrow">Rally Focus · Precision</p>
+              <h2 class="section-title">Practice Precision</h2>
+              <p class="lead">Rotate across the strings to underscore repetition, timing, and clean contact.</p>
+            </div>
+          </article>
+          <article
+            class="tennis-scroll-step"
+            data-orbit="-8deg 72deg 2.6m"
+            data-target="0m -0.05m 0m"
+            data-fov="34deg"
+          >
+            <div class="tennis-scroll-card reveal">
+              <p class="eyebrow">Rally Focus · Calm</p>
+              <h2 class="section-title">Match-Day Calm</h2>
+              <p class="lead">A subtle rotation mirrors the steady mindset needed under pressure.</p>
+            </div>
+          </article>
+          <article
+            class="tennis-scroll-step"
+            data-orbit="120deg 78deg 2.8m"
+            data-target="0m -0.45m 0m"
+            data-fov="36deg"
+          >
+            <div class="tennis-scroll-card reveal">
+              <p class="eyebrow">Rally Focus · Drive</p>
+              <h2 class="section-title">Grip &amp; Drive</h2>
+              <p class="lead">Settle on the handle to reinforce control, acceleration, and follow-through.</p>
+            </div>
+          </article>
+          <article
+            class="tennis-scroll-step"
+            data-orbit="180deg 74deg 4m"
+            data-target="0m 0m 0m"
+            data-fov="40deg"
+          >
+            <div class="tennis-scroll-card reveal">
+              <p class="eyebrow">Rally Focus · Momentum</p>
+              <h2 class="section-title">Team Momentum</h2>
+              <p class="lead">Pull back to the full frame and show how energy builds through every point.</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>

@@ -110,6 +110,18 @@ a {
   margin: 0 auto;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .site-header {
   position: sticky;
   top: 0;
@@ -683,45 +695,62 @@ h1 {
 }
 
 .tennis-scroll-section {
+  --tennis-scroll-edge-space: 50vh;
+  --tennis-step-bottom-space: 18vh;
   background: linear-gradient(120deg, rgba(18, 28, 54, 0.7), rgba(11, 15, 26, 0.95));
+  padding: 0;
+  position: relative;
 }
 
 .tennis-scroll-layout {
+  position: relative;
   display: grid;
-  gap: 2.5rem;
-  grid-template-columns: minmax(240px, 360px) minmax(260px, 1fr);
-  align-items: start;
 }
 
 .tennis-scroll-visual {
+  grid-area: 1 / 1;
   position: sticky;
-  top: clamp(5rem, 12vh, 7rem);
-  min-height: 360px;
+  top: 0;
+  height: 100vh;
+  width: 100%;
   display: grid;
   place-items: center;
+  z-index: 1;
 }
 
 .tennis-scroll-model {
-  width: min(380px, 100%);
-  height: 360px;
+  width: 100%;
+  height: 100%;
   display: block;
   background: transparent;
 }
 
 .tennis-scroll-steps {
-  display: grid;
-  gap: 2.5rem;
+  grid-area: 1 / 1;
+  position: relative;
+  z-index: 2;
+  padding: var(--tennis-scroll-edge-space) 0;
 }
 
 .tennis-scroll-step {
-  padding: 1.8rem;
-  border-radius: 18px;
-  background: rgba(17, 24, 39, 0.8);
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 1.5rem var(--tennis-step-bottom-space);
+}
+
+.tennis-scroll-card {
+  width: min(90vw, 520px);
+  padding: 2rem;
+  border-radius: 20px;
+  background: rgba(17, 24, 39, 0.82);
   border: 1px solid var(--border);
   box-shadow: var(--shadow-soft);
-  min-height: 52vh;
-  display: grid;
-  align-content: center;
+}
+
+.tennis-scroll-step.is-spacer {
+  pointer-events: none;
 }
 
 .project-scroll-visual {
@@ -1302,16 +1331,15 @@ h1 {
     padding: 4.5rem 0 4rem;
   }
 
-  .tennis-scroll-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .tennis-scroll-visual {
-    position: static;
-    min-height: 260px;
+  .tennis-scroll-section {
+    --tennis-step-bottom-space: 16vh;
   }
 
   .tennis-scroll-step {
-    min-height: auto;
+    padding: 0 1rem var(--tennis-step-bottom-space);
+  }
+
+  .tennis-scroll-card {
+    padding: 1.6rem;
   }
 }
