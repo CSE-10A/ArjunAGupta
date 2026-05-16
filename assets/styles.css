@@ -695,6 +695,7 @@ h1 {
 }
 
 .tennis-scroll-section {
+  --tennis-scroll-edge-space: 50vh;
   background: linear-gradient(120deg, rgba(18, 28, 54, 0.7), rgba(11, 15, 26, 0.95));
   padding: 0;
   position: relative;
@@ -727,7 +728,7 @@ h1 {
   grid-area: 1 / 1;
   position: relative;
   z-index: 2;
-  padding: 50vh 0;
+  padding: var(--tennis-scroll-edge-space) 0;
 }
 
 .tennis-scroll-step {
