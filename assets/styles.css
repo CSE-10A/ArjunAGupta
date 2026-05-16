@@ -683,7 +683,6 @@ h1 {
 }
 
 .tennis-scroll-section {
-  --tennis-scroll-offset: 100vh;
   background: linear-gradient(120deg, rgba(18, 28, 54, 0.7), rgba(11, 15, 26, 0.95));
   padding: 0;
   position: relative;
@@ -703,7 +702,6 @@ h1 {
   display: grid;
   place-items: center;
   z-index: 1;
-  pointer-events: none;
 }
 
 .tennis-scroll-model {
@@ -717,7 +715,7 @@ h1 {
   grid-area: 1 / 1;
   position: relative;
   z-index: 2;
-  padding: calc(var(--tennis-scroll-offset) / 2) 0;
+  padding: 50vh 0;
 }
 
 .tennis-scroll-step {
