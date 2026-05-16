@@ -691,9 +691,11 @@ h1 {
 
 .tennis-scroll-layout {
   position: relative;
+  display: grid;
 }
 
 .tennis-scroll-visual {
+  grid-area: 1 / 1;
   position: sticky;
   top: 0;
   height: 100vh;
@@ -712,9 +714,9 @@ h1 {
 }
 
 .tennis-scroll-steps {
+  grid-area: 1 / 1;
   position: relative;
   z-index: 2;
-  margin-top: calc(var(--tennis-scroll-offset) * -1);
   padding: calc(var(--tennis-scroll-offset) / 2) 0;
 }
 
@@ -735,7 +737,7 @@ h1 {
   box-shadow: var(--shadow-soft);
 }
 
-.tennis-scroll-step.is-blank {
+.tennis-scroll-step.is-spacer {
   pointer-events: none;
 }
 
