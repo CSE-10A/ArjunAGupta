@@ -696,6 +696,7 @@ h1 {
 
 .tennis-scroll-section {
   --tennis-scroll-edge-space: 50vh;
+  --tennis-step-bottom-space: 18vh;
   background: linear-gradient(120deg, rgba(18, 28, 54, 0.7), rgba(11, 15, 26, 0.95));
   padding: 0;
   position: relative;
@@ -736,7 +737,7 @@ h1 {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding: 0 1.5rem 18vh;
+  padding: 0 1.5rem var(--tennis-step-bottom-space);
 }
 
 .tennis-scroll-card {
@@ -1330,8 +1331,12 @@ h1 {
     padding: 4.5rem 0 4rem;
   }
 
+  .tennis-scroll-section {
+    --tennis-step-bottom-space: 16vh;
+  }
+
   .tennis-scroll-step {
-    padding: 0 1rem 16vh;
+    padding: 0 1rem var(--tennis-step-bottom-space);
   }
 
   .tennis-scroll-card {
